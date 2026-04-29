@@ -10,12 +10,14 @@
 - Pytania o analizę rekomendacji i wdrażanie poprawek.
 
 ## Kluczowe pojęcia
+
 - **Cost** – rekomendacje oszczędności.
 - **Security** – poprawa bezpieczeństwa.
 - **Performance** – wydajność.
 - **Operational Excellence** – zarządzanie i automatyzacja.
 
-## Scenariusze egzaminacyjne
+![Architektura Azure Advisor](../images/advisor-architecture.svg)
+
 - Analiza rekomendacji i wdrożenie zmian.
 
 ## Przykład użycia
