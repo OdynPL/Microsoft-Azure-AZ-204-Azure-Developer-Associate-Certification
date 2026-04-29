@@ -40,6 +40,12 @@ TECHNICAL ACCURACY:
 - Do not generalize if the exam expects specific knowledge
 - Prefer correctness over simplicity
 
+KEY CONCEPT EMPHASIS:
+- Always bold **kluczowe pojęcia** on first occurrence
+- Immediately explain each key concept in simple Polish
+- Explanations must be short and exam-oriented
+- Do not over-explain beyond exam needs
+
 CODE EXAMPLES:
 - Always include C# examples where applicable
 - Target .NET 8 when possible
@@ -66,12 +72,36 @@ CONTENT ORGANIZATION:
 STRUCTURE OF EACH TOPIC FILE:
 - Prosta definicja (po polsku)
 - Dlaczego temat jest ważny na AZ-204
-- Kluczowe pojęcia i komponenty (nic nie pomijaj)
+- Kluczowe pojęcia i komponenty (wszystkie, nic nie pomijaj)
 - Scenariusze egzaminacyjne
 - Przykłady użycia
 - Komendy lub konfiguracja (jeśli dotyczy)
 - Przykład kodu C# (.NET)
 - Wskazówka lub pułapka egzaminacyjna
+
+DUPLICATION CONTROL:
+- Before writing, scan existing files for duplicate content
+- Do NOT duplicate explanations already covered in another topic file
+- If overlap exists, reference the other file instead of copying content
+- Do NOT duplicate navigation blocks across files
+
+NAVIGATION RULES:
+- Do NOT copy or repeat navigation lines like:
+  "[Prev: Application Insights](application-insights.md) | [Next: App Configuration](app-configuration.md)"
+- Navigation must exist only once if already present
+- Avoid repeating identical footer or header sections
+
+CHANGE MANAGEMENT:
+- Apply changes file by file
+- Modify only the file currently being worked on
+- Do NOT refactor or update multiple files at once unless explicitly requested
+
+AUTONOMOUS WORK RULES:
+- Do NOT ask whether to proceed to the next file
+- Do NOT ask for confirmation to continue
+- Continue automatically with the next AZ-204 topic in scope
+- Stop ONLY when all topics from the official AZ-204 skills outline are completed
+- Assume implicit approval to proceed unless explicitly told to stop
 
 DOCUMENTATION RULES:
 - README.md contains ONLY:

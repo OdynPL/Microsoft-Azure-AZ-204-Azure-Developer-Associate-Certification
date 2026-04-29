@@ -1,23 +1,61 @@
+
 # Azure Blob Storage
 
-- Przechowywanie dużych ilości danych nieustrukturyzowanych.
-- Dostęp przez REST API, SDK.
-- Wspiera wersjonowanie, szyfrowanie, backup.
+## Definicja
+- Przechowywanie dużych ilości danych nieustrukturyzowanych (pliki, obrazy, backupy).
+- Dostęp przez REST API, SDK, Azure Portal.
 
-## Przykład C# (.NET 8, upload pliku)
+## Znaczenie na AZ-204
+- Najczęściej używany storage do plików w aplikacjach chmurowych.
+- Integracja z Functions, Logic Apps, App Service.
 
+## Kluczowe pojęcia
+- **Container**: logiczna grupa blobów.
+- **Blob**: pojedynczy plik (Block, Append, Page).
+- **Access Tier**: Hot, Cool, Archive.
+- **SAS Token**: bezpieczny dostęp tymczasowy.
+- **Blob Trigger**: wyzwalacz dla Functions.
+- Wersjonowanie, soft delete, lifecycle management.
+
+## Scenariusze egzaminacyjne
+- Upload/download plików przez SDK.
+- Udostępnianie plików przez SAS.
+- Automatyczne przetwarzanie plików (np. Functions po uploadzie).
+- Zarządzanie dostępem (RBAC, SAS, Access Policy).
+
+## Przykład użycia
+- Upload pliku przez SDK.
+- Generowanie SAS do pobrania pliku.
+
+## Komendy
+- Tworzenie kontenera:
+    `az storage container create --account-name mystorage --name mycontainer`
+- Generowanie SAS:
+    `az storage blob generate-sas --account-name mystorage --container-name mycontainer --name file.txt --permissions r --expiry 2026-12-31 --https-only`
+
+## Przykład kodu C# (.NET 8)
 ```csharp
 public async Task UploadBlobAsync(string connectionString, string container, string filePath)
 {
-    var client = new BlobContainerClient(connectionString, container);
-    var blob = client.GetBlobClient(Path.GetFileName(filePath));
-    await blob.UploadAsync(filePath, overwrite: true);
+        var client = new BlobContainerClient(connectionString, container);
+        var blob = client.GetBlobClient(Path.GetFileName(filePath));
+        try
+        {
+                await blob.UploadAsync(filePath, overwrite: true);
+        }
+        catch (RequestFailedException ex)
+        {
+                // Obsługa błędów dostępu, quota, itp.
+                throw;
+        }
 }
 ```
 
-- Użycie Azure.Storage.Blobs.
-- Async/await.
-- Przekazanie ścieżki do pliku.
+## Wskazówka egzaminacyjna
+- SAS Token wygasa, nie nadaje uprawnień na stałe.
+- Access Tier wpływa na koszty i czas dostępu.
+- RBAC dotyczy konta storage, nie pojedynczych blobów.
+
 
 ---
 
