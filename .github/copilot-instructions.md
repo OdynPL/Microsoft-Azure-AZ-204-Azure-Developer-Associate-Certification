@@ -87,7 +87,7 @@ DUPLICATION CONTROL:
 
 NAVIGATION RULES:
 - Do NOT copy or repeat navigation lines like:
-  "[Prev: Application Insights](application-insights.md) | [Next: App Configuration](app-configuration.md)"
+  "[Prev:]| [Next:]"
 - Navigation must exist only once if already present
 - Avoid repeating identical footer or header sections
 
@@ -102,6 +102,32 @@ AUTONOMOUS WORK RULES:
 - Continue automatically with the next AZ-204 topic in scope
 - Stop ONLY when all topics from the official AZ-204 skills outline are completed
 - Assume implicit approval to proceed unless explicitly told to stop
+
+DIAGRAMS (SVG) SPECIFICATION:
+- Create diagrams ONLY in SVG format
+- Store all diagrams in the folder: images/
+- One diagram per concept or architecture scenario
+- File naming: kebab-case, descriptive, topic-related
+  - Example: images/app-service-auth-flow.svg
+- Diagrams must be:
+  - clean
+  - readable
+  - professional
+  - aligned with Microsoft Azure system design conventions
+- Use standard Azure architecture patterns:
+  - left-to-right flow
+  - clear separation of layers (Client, App, Integration, Data)
+  - correct Azure service names and boundaries
+- Do NOT use decorative elements
+- Prefer clarity over visual complexity
+- Do NOT embed text-heavy explanations inside diagrams
+
+DIAGRAM INTEGRATION:
+- Reference diagrams explicitly in topic files
+- Insert diagrams immediately after the section they explain
+- Use relative paths:
+  - ![Opis diagramu](../images/diagram-name.svg)
+- Avoid duplicating the same diagram across multiple files
 
 DOCUMENTATION RULES:
 - README.md contains ONLY:
