@@ -27,7 +27,23 @@
 
 ## Przykład kodu C# (.NET 8)
 ```csharp
-// Brak SDK do zarządzania blueprintami w runtime aplikacji. Operacje tylko przez portal/REST.
+// Pobranie listy przypisanych blueprintów przez REST API
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class BlueprintExample
+{
+  public async Task<string> ListBlueprintAssignmentsAsync(string subscriptionId, string bearerToken)
+  {
+    using var client = new HttpClient();
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+    var url = $"https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments?api-version=2018-11-01-preview";
+    var response = await client.GetAsync(url);
+    response.EnsureSuccessStatusCode();
+    return await response.Content.ReadAsStringAsync();
+  }
+}
 ```
 
 ## Wskazówka egzaminacyjna

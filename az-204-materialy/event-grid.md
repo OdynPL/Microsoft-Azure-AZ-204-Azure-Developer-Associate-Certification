@@ -84,4 +84,23 @@ public void Run([EventGridTrigger] EventGridEvent eventGridEvent)
 - Filtrowanie pozwala ograniczyć liczbę wywołań handlera.
 
 ---
+## Różnice: Event Grid vs Event Hub vs Service Bus
+
+| Cecha                | Event Grid                | Event Hub                  | Service Bus                |
+|----------------------|---------------------------|----------------------------|----------------------------|
+| Typ                  | Eventing (routing zdarzeń)| Event streaming (telemetria)| Messaging (kolejkowanie)   |
+| Przechowywanie       | Brak                      | Krótkoterminowe (1-7 dni)  | Kolejki, tematy, DLQ       |
+| Scenariusze          | Powiadomienia, automatyzacja | IoT, telemetryka, big data | Integracja systemów, pub/sub|
+| Integracja           | Functions, Logic Apps, Webhook | Stream Analytics, Functions | Functions, Logic Apps      |
+| Model dostarczania   | Push                      | Pull                       | Push/Pull                  |
+| Filtrowanie          | Tak                       | Nie                        | Tak (subskrypcje)          |
+| Dead-letter          | Tak                       | Tak                        | Tak                        |
+| Retry                | Tak                       | Tak                        | Tak                        |
+| Ordering             | Nie                       | Partycje                   | Sesje                      |
+| Duplicate detection  | Nie                       | Nie                        | Tak                        |
+
+## Typowe scenariusze egzaminacyjne
+- Event Grid: powiadomienia o zmianach w Storage, automatyczne reakcje na zdarzenia, integracja z Functions.
+- Event Hub: zbieranie logów, telemetryki, IoT, analiza strumieniowa.
+- Service Bus: kolejki do buforowania zadań, pub/sub, integracja systemów, obsługa DLQ.
 

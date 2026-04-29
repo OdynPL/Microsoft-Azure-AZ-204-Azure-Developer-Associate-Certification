@@ -98,6 +98,26 @@ app.MapGet("/custom", (TelemetryClient telemetry) =>
     telemetry.TrackDependency("HTTP", "ExternalAPI", "GET /data", DateTimeOffset.Now, TimeSpan.FromMilliseconds(120), true);
     return Results.Ok("Custom event i dependency wysłane");
 });
+// Przykład 3: Wysyłanie custom metrics
+app.MapGet("/metric", (TelemetryClient telemetry) =>
+{
+  telemetry.GetMetric("CustomMetric").TrackValue(42);
+  return Results.Ok("Custom metric wysłana");
+});
+
+// Przykład 4: Logowanie do Application Insights przez ILogger
+var logger = app.Services.GetRequiredService<ILoggerFactory>().CreateLogger("AppLogger");
+app.MapGet("/log", () =>
+{
+  logger.LogWarning("To jest log ostrzeżenia do Application Insights");
+  return Results.Ok("Log wysłany");
+});
+
+// Przykład 5: Alert na błąd (konfiguracja w portalu Azure)
+// 1. Przejdź do Application Insights > Alerts > New alert rule
+// 2. Ustaw Condition: Custom log search (np. exceptions > 0 w ciągu 5 min)
+// 3. Ustaw Action Group (np. email, SMS)
+// 4. Zapisz i przetestuj wywołując endpoint /error
 app.Run();
 ```
 

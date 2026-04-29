@@ -29,6 +29,25 @@
 - Tworzenie Static Web App:
   `az staticwebapp create --name myapp --resource-group rg --source https://github.com/user/repo --location westeurope`
 
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład: API backend w Azure Static Web Apps (Function)
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+using System.Net;
+
+public class ApiFunction
+{
+  [Function("HelloApi")]
+  public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
+  {
+    var response = req.CreateResponse(HttpStatusCode.OK);
+    response.WriteString("Hello from Static Web Apps API!");
+    return response;
+  }
+}
+```
+
 ## Wskazówka egzaminacyjna
 - Static Web Apps automatycznie integruje się z GitHub Actions.
 - Najczęstszy błąd: brak pliku routes.json przy customowych ścieżkach lub brak autoryzacji.

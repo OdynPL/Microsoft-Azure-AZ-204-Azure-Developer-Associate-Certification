@@ -27,7 +27,22 @@
 
 ## Przykład kodu C# (.NET 8)
 ```csharp
-// Brak SDK do zarządzania Private Link w runtime aplikacji. Konfiguracja na poziomie infrastruktury.
+// Sprawdzenie czy połączenie pochodzi z Private Endpoint (np. w Web API)
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+
+public class PrivateLinkController : ControllerBase
+{
+  [HttpGet("/check-private-link")]
+  public IActionResult CheckPrivateLink()
+  {
+    var remoteIp = HttpContext.Connection.RemoteIpAddress;
+    // Załóżmy, że Private Endpoint jest w zakresie 10.0.0.0/24
+    if (remoteIp != null && remoteIp.ToString().StartsWith("10.0.0."))
+      return Ok("Połączenie przez Private Endpoint");
+    return Forbid();
+  }
+}
 ```
 
 ## Wskazówka egzaminacyjna

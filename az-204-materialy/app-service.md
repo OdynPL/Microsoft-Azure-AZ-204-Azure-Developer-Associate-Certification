@@ -75,6 +75,45 @@ app.MapGet("/", () => $"Hello from App Service! ENV: {Environment.GetEnvironment
 app.Run();
 ```
 
+## Przykład: Obsługa deployment slots (swap)
+```csharp
+// Przykład: automatyczny swap slotów po wdrożeniu (np. staging -> production) przez Azure SDK
+using Azure.Identity;
+using Azure.ResourceManager.AppService;
+using Azure.ResourceManager;
+
+var credential = new DefaultAzureCredential();
+var armClient = new ArmClient(credential);
+var webApp = await armClient.GetWebSiteResource(WebSiteResource.CreateResourceIdentifier(
+	subscriptionId, resourceGroupName, webAppName)).GetAsync();
+await webApp.Value.SwapSlotWithProductionAsync("staging");
+```
+
+## Przykład: Dodanie custom domain i SSL przez Azure CLI
+```powershell
+# Dodanie domeny
+az webapp config hostname add --webapp-name myapp --resource-group rg --hostname www.mojadomena.pl
+# Dodanie certyfikatu SSL
+az webapp config ssl upload --resource-group rg --name myapp --certificate-file cert.pfx --certificate-password <haslo>
+az webapp config ssl bind --resource-group rg --name myapp --certificate-thumbprint <thumbprint> --ssl-type SNI --hostname www.mojadomena.pl
+```
+
+## Przykład: Wymuszenie HTTPS w kodzie .NET 8
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.ConfigureKestrel(options =>
+{
+	options.ConfigureHttpsDefaults(httpsOptions =>
+	{
+		httpsOptions.SslProtocols = System.Security.Authentication.SslProtocols.Tls12;
+	});
+});
+var app = builder.Build();
+app.UseHttpsRedirection();
+app.MapGet("/", () => "Wymuszony HTTPS na App Service");
+app.Run();
+```
+
 ```csharp
 // Przykład 2: Użycie Managed Identity i App Settings
 using Azure.Identity;
