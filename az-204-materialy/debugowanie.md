@@ -1,3 +1,5 @@
+#
+[Prev: Sposoby deployowania aplikacji](deployment-methods.md) | [Next: Azure Monitor](monitor.md)
 # Debugowanie aplikacji w Azure
 
 **Definicja:**

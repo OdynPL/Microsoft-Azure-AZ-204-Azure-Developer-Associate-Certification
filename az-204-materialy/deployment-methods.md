@@ -1,3 +1,5 @@
+#
+[Prev: Azure Deployment (ARM/Bicep)](deployment-bicep.md) | [Next: Debugowanie aplikacji w Azure](debugowanie.md)
 # Sposoby deployowania aplikacji na Azure
 
 **Definicja:**

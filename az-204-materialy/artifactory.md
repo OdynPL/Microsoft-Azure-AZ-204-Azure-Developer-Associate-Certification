@@ -1,3 +1,5 @@
+#
+[Prev: Azure Kubernetes Service (AKS)](azure-aks.md) | [Next: Azure Service Fabric](service-fabric.md)
 # Artifactory (Azure)
 
 - Repozytorium artefaktów (np. NuGet, Maven, Docker) do przechowywania i dystrybucji pakietów.

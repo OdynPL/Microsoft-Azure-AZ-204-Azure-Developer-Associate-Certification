@@ -1,3 +1,5 @@
+#
+[Prev: Debugowanie aplikacji w Azure](debugowanie.md) | [Next: Deployment (Bicep)](deployment-bicep.md)
 # Azure Deployment (ARM)
 
 - Automatyzacja wdrożeń zasobów Azure za pomocą szablonów ARM (JSON).

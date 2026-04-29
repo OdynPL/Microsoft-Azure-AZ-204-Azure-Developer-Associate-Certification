@@ -1,3 +1,5 @@
+#
+[Prev: Azure Containers](azure-containers.md) | [Next: Artifactory (Azure)](artifactory.md)
 # Azure Kubernetes Service (AKS)
 
 - Zarządzany klaster Kubernetes w Azure.
