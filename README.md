@@ -1,3 +1,5 @@
+- [Azure with Docker](az-204-materialy/azure-with-docker.md)
++- [Azure SDK for .NET](az-204-materialy/azure-sdk.md)
 
 Materiały zawierają praktyczne podsumowanie zagadnień egzaminu Microsoft AZ-204.
 Każdy rozdział to osobny plik z krótką definicją i przykładem.
