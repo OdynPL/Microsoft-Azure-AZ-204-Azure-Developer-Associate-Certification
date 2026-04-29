@@ -16,13 +16,24 @@
 ## Kluczowe pojęcia
 - **Event Hub Namespace**: kontener logiczny dla hubów.
 - **Event Hub**: kanał do przesyłania zdarzeń.
-- **Partition**: partycjonowanie danych dla skalowalności.
+- **Partition**: partycjonowanie danych dla skalowalności (więcej partycji = większa równoległość, ale nie zawsze lepsza wydajność).
 - **Consumer Group**: niezależni odbiorcy zdarzeń.
 - **Event Publisher**: nadawca zdarzeń (np. aplikacja, IoT device).
 - **Event Receiver**: odbiorca zdarzeń (np. Function, Stream Analytics).
-- **Capture**: automatyczne zapisywanie zdarzeń do Storage/ADLS.
-- **Throughput Units**: jednostki przepustowości (skalowanie).
-- **Checkpointing**: zapamiętywanie pozycji odczytu.
+- **Capture**: automatyczne zapisywanie zdarzeń do Storage/ADLS (wymaga włączenia, kosztuje dodatkowo).
+- **Throughput Units**: jednostki przepustowości (skalowanie, 1 TU = 1 MB/s lub 1000 msg/s).
+- **Checkpointing**: zapamiętywanie pozycji odczytu (ważne przy awarii odbiorcy).
+## Zaawansowane scenariusze
+- Event Hub Capture do analizy batchowej (np. Data Lake).
+- Skalowanie przez zwiększanie TU lub partycji.
+- Obsługa dead-letter (przekierowanie nieprzetworzonych zdarzeń).
+- Integracja z Event Grid (event-driven architektura).
+## Typowe pułapki egzaminacyjne
+- Zbyt dużo partycji nie zawsze = lepsza wydajność (limit odbiorców na partycję).
+- Capture wymaga osobnego Storage/ADLS i generuje koszty.
+- Throughput Units są współdzielone przez wszystkie huby w namespace.
+- Checkpointing leży po stronie odbiorcy (np. Azure Functions, SDK).
+- Event Hub ≠ Service Bus (Event Hub = streaming, Service Bus = messaging).
 
 ## Scenariusze egzaminacyjne
 - Wysyłanie i odbieranie zdarzeń przez .NET 8.

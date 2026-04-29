@@ -54,3 +54,4 @@ Każdy rozdział to osobny plik z krótką definicją i przykładem.
 - [Azure Marketplace](az-204-materialy/marketplace.md)
 - [Azure .NET Aspire](az-204-materialy/dotnet-aspire.md)
 - [Azure PowerShell](az-204-materialy/powershell.md)
+- [Azure with Docker](az-204-materialy/azure-with-docker.md)
