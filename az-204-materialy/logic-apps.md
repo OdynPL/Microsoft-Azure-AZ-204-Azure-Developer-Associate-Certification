@@ -48,13 +48,28 @@
 - Najczęstszy błąd: brak uprawnień do usługi docelowej (np. Key Vault).
 - Retry i obsługa błędów są konfigurowalne dla każdej akcji.
 
-## Przykład użycia
 
-- Tworzenie workflow przez portal Azure.
-- Dodanie wyzwalacza (np. HTTP request).
-- Dodanie akcji (np. wysłanie maila przez Outlook).
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład: Wywołanie Logic App przez HTTP trigger
+using System.Net.Http;
+using System.Threading.Tasks;
 
-- Brak kodu C#, konfiguracja graficzna.
+public class LogicAppCaller
+{
+	public async Task<string> CallLogicAppAsync(string logicAppUrl, string payload)
+	{
+		using var client = new HttpClient();
+		var response = await client.PostAsync(logicAppUrl, new StringContent(payload, System.Text.Encoding.UTF8, "application/json"));
+		response.EnsureSuccessStatusCode();
+		return await response.Content.ReadAsStringAsync();
+	}
+}
+```
+
+// Tworzenie workflow przez portal Azure.
+// Dodanie wyzwalacza (np. HTTP request).
+// Dodanie akcji (np. wysłanie maila przez Outlook).
 
 ---
 

@@ -71,8 +71,27 @@
 | --runtime | Środowisko uruchomieniowe (np. DOTNET:8) |
 | --storage-account | Konto Storage dla Functions |
 
-## Przykład kodu
-Brak — obsługa przez terminal, nie przez C#.
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład: Wywołanie polecenia w Cloud Shell przez REST API (Automation)
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class CloudShellExample
+{
+	public async Task<string> RunCloudShellCommandAsync(string bearerToken, string command)
+	{
+		using var client = new HttpClient();
+		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+		var url = "https://management.azure.com/providers/Microsoft.Portal/consoles/default/executeCommand?api-version=2020-04-01-preview";
+		var body = $"{{\"command\":\"{command}\"}}";
+		var response = await client.PostAsync(url, new StringContent(body, System.Text.Encoding.UTF8, "application/json"));
+		response.EnsureSuccessStatusCode();
+		return await response.Content.ReadAsStringAsync();
+	}
+}
+```
 
 ## Wskazówka egzaminacyjna
 - Cloud Shell wymaga storage account (tworzy się automatycznie).

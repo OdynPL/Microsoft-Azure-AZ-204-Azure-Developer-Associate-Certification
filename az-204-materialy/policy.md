@@ -31,7 +31,23 @@
 
 ## Przykład kodu C# (.NET 8)
 ```csharp
-// Brak SDK do zarządzania policy w runtime aplikacji. Policy działa na poziomie zarządzania zasobami.
+// Przykład: Pobranie przypisanych policy przez REST API
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class PolicyExample
+{
+  public async Task<string> ListPolicyAssignmentsAsync(string subscriptionId, string bearerToken)
+  {
+    using var client = new HttpClient();
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+    var url = $"https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments?api-version=2021-06-01";
+    var response = await client.GetAsync(url);
+    response.EnsureSuccessStatusCode();
+    return await response.Content.ReadAsStringAsync();
+  }
+}
 ```
 
 ## Wskazówka egzaminacyjna

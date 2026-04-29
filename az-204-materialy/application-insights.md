@@ -28,6 +28,10 @@
 - **Dependency Tracking**: monitorowanie połączeń z bazą, API, usługami zewnętrznymi.
 - **Custom Events**: własne zdarzenia i metryki.
 
+**Kluczowe pojęcia dodatkowe:**
+- **Cloud Role Name** – identyfikacja komponentu w rozproszonej architekturze.
+- **Operation Id** – śledzenie powiązanych żądań w distributed tracing.
+
 ## Scenariusze egzaminacyjne
 - Rejestrowanie zdarzeń, błędów, metryk w .NET 8 (Web API, Functions).
 - Analiza wydajności, alerty, wykrywanie anomalii.
@@ -50,6 +54,9 @@
   `az monitor app-insights component show --app myapp --resource-group rg --query connectionString`
 - Włączenie monitoringu w App Service:
   `az webapp config appsettings set --resource-group rg --name myapp --settings "APPLICATIONINSIGHTS_CONNECTION_STRING=..."`
+
+- Pobranie logów przez PowerShell:
+  `Search-AzMonitorLog -ResourceGroupName rg -WorkspaceName myapp -Query "exceptions | take 10"`
 
 ## Przykład kodu C# (.NET 8)
 ```csharp
@@ -77,12 +84,30 @@ app.MapGet("/error", (TelemetryClient telemetry) =>
 app.Run();
 ```
 
+```csharp
+// Przykład 2: Wysyłanie custom event i dependency
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddApplicationInsightsTelemetry();
+var app = builder.Build();
+app.MapGet("/custom", (TelemetryClient telemetry) =>
+{
+    telemetry.TrackEvent("CustomEvent", new Dictionary<string, string> { { "User", "test" } });
+    telemetry.TrackDependency("HTTP", "ExternalAPI", "GET /data", DateTimeOffset.Now, TimeSpan.FromMilliseconds(120), true);
+    return Results.Ok("Custom event i dependency wysłane");
+});
+app.Run();
+```
+
 ## Wskazówka egzaminacyjna
 - **Instrumentation Key** nie jest już zalecany, preferuj **connection string**.
 - Sampling ogranicza koszty, ale może ukryć rzadkie błędy.
 - Live Metrics nie wymaga restartu aplikacji.
 - Najczęstszy błąd: brak telemetry w kodzie lub brak connection string w konfiguracji.
 - Distributed tracing wymaga propagacji nagłówków między usługami.
+  - Częsty błąd: brak Cloud Role Name lub Operation Id w rozproszonych systemach.
 
 
 ---

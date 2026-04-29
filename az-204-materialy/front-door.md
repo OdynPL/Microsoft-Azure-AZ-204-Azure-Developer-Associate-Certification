@@ -42,11 +42,31 @@
 - Konfiguracja health probe i failover.
 - Ustawienie cache dla statycznych zasobów.
 
-## Przykład użycia
-- Konfiguracja przez portal Azure lub ARM/Bicep.
-- Ustawienie reguł routingu, SSL, WAF.
-- Przekierowanie ruchu na podstawie ścieżki.
-- Przykład ARM/Bicep:
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład: Pobranie konfiguracji Front Door przez REST API
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class FrontDoorExample
+{
+	public async Task<string> GetFrontDoorConfigAsync(string subscriptionId, string resourceGroup, string frontDoorName, string bearerToken)
+	{
+		using var client = new HttpClient();
+		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+		var url = $"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/frontDoors/{frontDoorName}?api-version=2021-06-01";
+		var response = await client.GetAsync(url);
+		response.EnsureSuccessStatusCode();
+		return await response.Content.ReadAsStringAsync();
+	}
+}
+```
+
+// Konfiguracja przez portal Azure lub ARM/Bicep.
+// Ustawienie reguł routingu, SSL, WAF.
+// Przekierowanie ruchu na podstawie ścieżki.
+// Przykład ARM/Bicep:
 ```bicep
 resource fd 'Microsoft.Network/frontDoors@2021-06-01' = {
 	name: 'myFrontDoor'

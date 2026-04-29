@@ -28,6 +28,24 @@
 - Tworzenie Logic App Standard:
   `az logic workflow create --resource-group rg --name mylogic --definition @workflow.json --location westeurope --sku Standard`
 
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład: Wywołanie Logic App Standard przez HTTP trigger
+using System.Net.Http;
+using System.Threading.Tasks;
+
+public class LogicAppStandardCaller
+{
+  public async Task<string> CallLogicAppStandardAsync(string logicAppUrl, string payload)
+  {
+    using var client = new HttpClient();
+    var response = await client.PostAsync(logicAppUrl, new StringContent(payload, System.Text.Encoding.UTF8, "application/json"));
+    response.EnsureSuccessStatusCode();
+    return await response.Content.ReadAsStringAsync();
+  }
+}
+```
+
 ## Wskazówka egzaminacyjna
 - Standard = wyższe limity, integracja z VNet, deployment slots.
 - Najczęstszy błąd: wybór Consumption gdy potrzebny jest dostęp do VNet lub deployment slots.

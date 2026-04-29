@@ -31,6 +31,10 @@
 - **Scale out/in**: automatyczne zwiększanie/zmniejszanie liczby instancji.
 - **CI/CD**: integracja z GitHub Actions, Azure DevOps, Bitbucket.
 
+**Kluczowe pojęcia dodatkowe:**
+- **Slot-specific settings** – ustawienia przypisane do slotu, nie kopiowane przy swap.
+- **Outbound IP addresses** – adresy wychodzące App Service.
+
 ## Scenariusze egzaminacyjne
 - Wdrażanie aplikacji .NET/Node.js/Python przez portal, CLI, CI/CD.
 - Konfiguracja deployment slots i swap (np. blue-green deployment).
@@ -57,6 +61,9 @@
 - Ustawienie App Settings:
 	`az webapp config appsettings set --resource-group rg --name myapp --settings Key=Value`
 
+- Pobranie App Settings przez PowerShell:
+  `Get-AzWebApp -ResourceGroup rg -Name myapp | Get-AzWebAppConfig`
+
 ## Przykład kodu C# (.NET 8)
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -68,12 +75,31 @@ app.MapGet("/", () => $"Hello from App Service! ENV: {Environment.GetEnvironment
 app.Run();
 ```
 
+```csharp
+// Przykład 2: Użycie Managed Identity i App Settings
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddEnvironmentVariables();
+var keyVaultUrl = builder.Configuration["KeyVaultUrl"];
+var secretClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
+var app = builder.Build();
+app.MapGet("/secret", async () =>
+{
+	var secret = await secretClient.GetSecretAsync("MySecret");
+	return Results.Ok(secret.Value.Value);
+});
+app.Run();
+```
+
 ## Wskazówka egzaminacyjna
 - App Service nie obsługuje Windows Authentication.
 - Ograniczenia planów Free/Shared (brak SSL, autoskalowania, Always On).
 - Swap slotów nie przenosi ustawień slot-specific (np. connection strings oznaczonych jako slot setting).
 - Managed Identity wymaga włączenia w ustawieniach aplikacji.
 - Najczęstszy błąd: brak Always On powoduje usypianie aplikacji.
+	- Częsty błąd: brak slot-specific settings lub nieprawidłowa konfiguracja Managed Identity.
 
 ---
 

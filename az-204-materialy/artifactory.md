@@ -32,12 +32,59 @@
   `nuget install MyPackage -Source "https://myartifactory/artifactory/api/nuget/v3/nuget-local"`
 
 ## Komendy
-- Push/pull Docker:
   `docker push/pull ...`
-- Pobranie pakietu:
   `nuget install ...`
-- Ustawienie retention policy:
   (przez UI lub REST API Artifactory)
+
+Push/pull Docker:
+  `docker push/pull ...`
+Pobranie pakietu:
+  `nuget install ...`
+Ustawienie retention policy:
+  (przez UI lub REST API Artifactory)
+
+Pobranie artefaktu przez PowerShell:
+  `Invoke-RestMethod -Uri "https://myartifactory/artifactory/myrepo/myfile.zip" -Headers @{Authorization = "Bearer $token"} -OutFile myfile.zip`
+
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład 1: Pobranie artefaktu przez REST API
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class ArtifactoryDownload
+{
+    public async Task DownloadArtifactAsync(string url, string token, string outputPath)
+    {
+        using var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var response = await client.GetAsync(url);
+        response.EnsureSuccessStatusCode();
+        await using var fs = File.Create(outputPath);
+        await response.Content.CopyToAsync(fs);
+    }
+}
+```
+
+```csharp
+// Przykład 2: Upload artefaktu przez REST API
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class ArtifactoryUpload
+{
+    public async Task UploadArtifactAsync(string url, string token, string filePath)
+    {
+        using var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        using var content = new StreamContent(File.OpenRead(filePath));
+        var response = await client.PutAsync(url, content);
+        response.EnsureSuccessStatusCode();
+    }
+}
+```
 
 ## Wskazówka egzaminacyjna
 - Artifactory nie jest natywną usługą Azure, ale często używane w projektach DevOps.

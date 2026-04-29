@@ -31,6 +31,11 @@
 - **Rate limit**: ograniczenie liczby żądań na klucz/subskrypcję.
 - **Quota**: limit liczby żądań w określonym czasie.
 
+**Kluczowe pojęcia dodatkowe:**
+- **Inbound/Outbound policy** – polityki przetwarzania żądań przed i po backendzie.
+- **SOAP passthrough** – wsparcie dla SOAP przez API Management.
+- **Mock API** – symulacja odpowiedzi bez backendu.
+
 ## Scenariusze egzaminacyjne
 - Import API przez OpenAPI, Swagger, WSDL.
 - Konfiguracja polityk (rate-limit, rewrite, JWT validation, CORS, cache, transformacja nagłówków).
@@ -73,6 +78,9 @@
 - Pobranie klucza subskrypcji:
 	Portal > API Management > Subscriptions
 
+- Pobranie subskrypcji przez PowerShell:
+  `Get-AzApiManagementSubscription -ResourceGroupName rg -ServiceName myapim`
+
 ## Przykład kodu C# (.NET 8)
 // Konfiguracja po stronie API (np. walidacja JWT):
 ```csharp
@@ -84,6 +92,22 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 	});
 ```
 
+```csharp
+// Przykład 2: Weryfikacja subskrypcji i limitów po stronie backendu
+using Microsoft.AspNetCore.Mvc;
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.MapGet("/data", ([FromHeader(Name = "Ocp-Apim-Subscription-Key")] string subscriptionKey) =>
+{
+    if (string.IsNullOrEmpty(subscriptionKey))
+        return Results.Unauthorized();
+    // Tu można dodać logikę limitowania lub walidacji klucza
+    return Results.Ok("Dane tylko dla subskrybentów");
+});
+app.Run();
+```
+
 - Polityki są deklaratywne (XML), nie kod.
 - Najczęstszy błąd: brak subskrypcji lub nieprawidłowy klucz.
 - Polityki walidacji JWT wymagają poprawnego audience i issuer.
@@ -91,6 +115,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 - Wersjonowanie API nie przerywa działania istniejących klientów.
 - Subskrypcje mogą być wymagane do wywołania API.
 - Developer Portal można dostosować.
+
+	- Częsty błąd: brak polityki rate-limit lub quota.
+	- Mock API nie wymaga backendu – przydatne do testów.
 
 
 ---

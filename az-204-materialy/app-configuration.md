@@ -27,6 +27,10 @@
 - **Provider**: integracja z .NET przez Microsoft.Extensions.Configuration.AzureAppConfiguration.
 - **Dynamic Refresh**: automatyczne odświeżanie konfiguracji bez restartu aplikacji.
 
+**Kluczowe pojęcia dodatkowe:**
+- **Label filter** – pobieranie konfiguracji tylko dla wybranej etykiety.
+- **Key Vault reference** – integracja z Azure Key Vault.
+
 ## Scenariusze egzaminacyjne
 - Pobieranie konfiguracji z App Configuration w .NET 8 (Web API, Functions).
 - Użycie feature flags do sterowania funkcjami (np. rollout nowej funkcji).
@@ -50,6 +54,9 @@
 - Wyświetlenie historii zmian:
     `az appconfig revision list --name myappconfig --key MyKey`
 
+- Pobranie konfiguracji przez PowerShell:
+  `Get-AzAppConfigurationKeyValue -Name myappconfig -Key MyKey -Label prod`
+
 ## Przykład kodu C# (.NET 8)
 ```csharp
 using Azure.Identity;
@@ -72,12 +79,37 @@ var app = builder.Build();
 // ...
 ```
 
+```csharp
+// Przykład 2: Użycie feature flags i dynamiczne odświeżanie
+using Microsoft.FeatureManagement;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.AddAzureAppConfiguration(options =>
+    {
+        options.Connect(Environment.GetEnvironmentVariable("AppConfigConnectionString"))
+               .UseFeatureFlags();
+    });
+});
+builder.Services.AddFeatureManagement();
+var app = builder.Build();
+app.MapGet("/beta", async (IFeatureManager featureManager) =>
+{
+    if (await featureManager.IsEnabledAsync("betaFeature"))
+        return Results.Ok("Beta włączona");
+    return Results.NotFound();
+});
+app.Run();
+```
+
 ## Wskazówka egzaminacyjna
 - **Feature flags** mogą być odświeżane bez restartu aplikacji.
 - Klucze mogą mieć etykiety środowiskowe (**labels**).
 - App Configuration nie przechowuje tajnych danych (do tego **Key Vault**).
 - Najczęstszy błąd: brak odświeżania konfiguracji lub nieprawidłowa etykieta.
 - Feature flags nie są mechanizmem bezpieczeństwa, tylko sterowania logiką.
+    - Częsty błąd: brak integracji z Key Vault lub nieprawidłowy label filter.
 
 
 ---

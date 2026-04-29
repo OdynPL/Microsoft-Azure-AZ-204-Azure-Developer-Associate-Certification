@@ -29,6 +29,27 @@
 - Tworzenie Notification Hub:
   `az notification-hub create --resource-group rg --namespace-name myns --name myhub --location westeurope`
 
+## Przykład kodu C# (.NET 8)
+```csharp
+// Przykład: Wysyłka powiadomienia push przez REST API
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+public class NotificationHubSender
+{
+  public async Task SendPushAsync(string hubNamespace, string hubName, string sasToken, string payload)
+  {
+    using var client = new HttpClient();
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SharedAccessSignature", sasToken);
+    client.DefaultRequestHeaders.Add("ServiceBusNotification-Format", "gcm"); // lub apns dla iOS
+    var url = $"https://{hubNamespace}.servicebus.windows.net/{hubName}/messages/?api-version=2015-01";
+    var response = await client.PostAsync(url, new StringContent(payload, System.Text.Encoding.UTF8, "application/json"));
+    response.EnsureSuccessStatusCode();
+  }
+}
+```
+
 ## Wskazówka egzaminacyjna
 - Najczęstszy błąd: brak poprawnej konfiguracji PNS lub brak rejestracji urządzenia.
 - Notification Hubs nie przechowuje historii powiadomień.
