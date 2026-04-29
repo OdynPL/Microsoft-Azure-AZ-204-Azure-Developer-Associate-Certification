@@ -1,5 +1,9 @@
 
+
 # Azure Deployment (ARM/Bicep)
+---
+
+[Prev: API Authorization](api-authorization.md) | [Next: Event Grid](event-grid.md)
 
 - Automatyzacja wdrożeń zasobów Azure.
 - Użycie szablonów **ARM** (JSON) lub języka **Bicep** (DSL).
@@ -91,4 +95,3 @@ output storageId string = storage.id
 
 ---
 
-[Prev: API Authorization](api-authorization.md) | [Next: Event Grid](event-grid.md)

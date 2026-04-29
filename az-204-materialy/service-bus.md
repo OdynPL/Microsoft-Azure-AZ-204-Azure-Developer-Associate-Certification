@@ -1,5 +1,9 @@
 
+
 # Azure Service Bus
+---
+
+[Prev: Redis](redis.md) | [Next: SignalR](signalr.md)
 
 - Usługa kolejkowania i przesyłania komunikatów (enterprise messaging).
 - Wspiera kolejki (queues) i tematy (topics/subscriptions).
@@ -98,4 +102,3 @@ public async Task SendMessageAsync(string connectionString, string queueName, st
 
 ---
 
-[Prev: Redis](redis.md) | [Next: SignalR](signalr.md)

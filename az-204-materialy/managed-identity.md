@@ -1,5 +1,9 @@
 
+
 # Azure Managed Identity
+---
+
+[Prev: Logic Apps](logic-apps.md) | [Next: Monitor](monitor.md)
 
 - Automatyczne zarządzanie tożsamością dla zasobów Azure (np. App Service, VM, Functions, Logic Apps).
 - Umożliwia uwierzytelnianie do usług Azure bez przechowywania haseł, certyfikatów, secretów.
@@ -92,4 +96,3 @@ Console.WriteLine(message.Body.ToString());
 
 ---
 
-[Prev: Logic Apps](logic-apps.md) | [Next: Monitor](monitor.md)

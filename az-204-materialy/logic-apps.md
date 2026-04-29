@@ -1,5 +1,9 @@
 
+
 # Azure Logic Apps
+---
+
+[Prev: Key Vault](key-vault.md) | [Next: Managed Identity](managed-identity.md)
 
 - Usługa do budowy workflow bez kodowania (**low-code/no-code**).
 - Integracja z wieloma usługami przez **konektory** (Outlook, Teams, SQL, HTTP, Service Bus, Event Grid).
@@ -54,4 +58,3 @@
 
 ---
 
-[Prev: Key Vault](key-vault.md) | [Next: Managed Identity](managed-identity.md)

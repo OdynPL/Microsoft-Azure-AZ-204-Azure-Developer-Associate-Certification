@@ -1,5 +1,9 @@
 
+
 # Azure Storage Queue
+---
+
+[Prev: SQL Database](sql-database.md) | [Next: Table Storage](table-storage.md)
 
 - Prosta kolejka do przechowywania i przesyłania komunikatów (FIFO).
 - Niskie koszty, wysoka dostępność, integracja z Functions, Logic Apps.
@@ -91,4 +95,3 @@ public async Task SendQueueMessageAsync(string connectionString, string queueNam
 
 ---
 
-[Prev: SQL Database](sql-database.md) | [Next: Table Storage](table-storage.md)

@@ -1,6 +1,9 @@
 
 
 # Azure API Authorization
+---
+
+[Prev: VNet](vnet.md) | [Next: Deployment (Bicep)](deployment-bicep.md)
 
 ## Definicja
 - Uwierzytelnianie (**authentication**) i autoryzacja (**authorization**) dostępu do API w Azure.
@@ -94,4 +97,3 @@ appsettings.json:
 
 ---
 
-[Prev: VNet](vnet.md) | [Next: Deployment (Bicep)](deployment-bicep.md)

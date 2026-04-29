@@ -1,5 +1,9 @@
 
+
 # Azure SignalR Service
+---
+
+[Prev: Service Bus](service-bus.md) | [Next: SQL Database](sql-database.md)
 
 - Usługa do komunikacji w czasie rzeczywistym (WebSocket, long polling, SSE).
 - Umożliwia skalowanie aplikacji SignalR w chmurze bez zarządzania infrastrukturą.
@@ -84,4 +88,3 @@ public class ChatHub : Hub
 
 ---
 
-[Prev: Service Bus](service-bus.md) | [Next: SQL Database](sql-database.md)

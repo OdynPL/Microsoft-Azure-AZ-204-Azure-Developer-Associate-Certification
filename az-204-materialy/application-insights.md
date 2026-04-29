@@ -1,6 +1,9 @@
 
 
 # Azure Application Insights
+---
+
+[Prev: API Management](api-management.md) | [Next: App Service](app-service.md)
 
 ## Definicja
 - Usługa do monitorowania aplikacji w czasie rzeczywistym (**APM**).
@@ -84,4 +87,3 @@ app.Run();
 
 ---
 
-[Prev: API Management](api-management.md) | [Next: App Service](app-service.md)

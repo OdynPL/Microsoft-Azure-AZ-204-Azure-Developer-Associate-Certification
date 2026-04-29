@@ -1,5 +1,9 @@
 
+
 # Azure CDN
+---
+
+[Prev: Azure Functions](azure-functions.md) | [Next: Blob Storage](blob-storage.md)
 
 ## Definicja
 - Usługa Content Delivery Network do przyspieszania dostarczania treści.
@@ -43,4 +47,3 @@ Brak — konfiguracja przez portal lub CLI.
 
 ---
 
-[Prev: Azure Functions](azure-functions.md) | [Next: Blob Storage](blob-storage.md)

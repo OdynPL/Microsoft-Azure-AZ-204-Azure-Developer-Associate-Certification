@@ -1,5 +1,9 @@
 
+
 # Azure Monitor
+---
+
+[Prev: Managed Identity](managed-identity.md) | [Next: Redis](redis.md)
 
 - Monitorowanie zasobów i aplikacji w Azure (infrastruktura, PaaS, aplikacje).
 - Zbieranie logów, metryk, alertów, śledzenie zmian, diagnostyka.
@@ -55,4 +59,3 @@
 
 ---
 
-[Prev: Managed Identity](managed-identity.md) | [Next: Redis](redis.md)

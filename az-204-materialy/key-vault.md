@@ -1,6 +1,10 @@
 
 
+
 # Azure Key Vault
+---
+
+[Prev: Front Door](front-door.md) | [Next: Logic Apps](logic-apps.md)
 
 ## Definicja
 - Bezpieczne przechowywanie sekretów, kluczy, certyfikatów.
@@ -77,4 +81,3 @@ public async Task<string> GetSecretAsync(string vaultUrl, string secretName)
 
 ---
 
-[Prev: Front Door](front-door.md) | [Next: Logic Apps](logic-apps.md)

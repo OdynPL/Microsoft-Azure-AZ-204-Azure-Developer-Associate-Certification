@@ -1,6 +1,9 @@
 
 
 # Azure API Management
+---
+
+[Prev: App Configuration](app-configuration.md) | [Next: Application Insights](application-insights.md)
 
 ## Definicja
 - Usługa do zarządzania, zabezpieczania i monitorowania API.
@@ -92,4 +95,3 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 ---
 
-[Prev: App Configuration](app-configuration.md) | [Next: Application Insights](application-insights.md)

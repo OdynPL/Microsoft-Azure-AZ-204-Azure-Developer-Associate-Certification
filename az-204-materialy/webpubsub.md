@@ -1,5 +1,9 @@
 
+
 # Azure Web PubSub
+---
+
+[Prev: Table Storage](table-storage.md) | [Next: Cloud Shell](cloud-shell.md)
 
 - Usługa do komunikacji w czasie rzeczywistym (WebSocket, PubSub, SignalR protocol).
 - Umożliwia skalowanie komunikacji do tysięcy klientów bez zarządzania infrastrukturą.
@@ -84,4 +88,3 @@ public class MyHub : WebPubSubHub
 
 ---
 
-[Prev: Table Storage](table-storage.md) | [Next: Cloud Shell](cloud-shell.md)

@@ -1,5 +1,9 @@
 
+
 # Azure SQL Database
+---
+
+[Prev: SignalR](signalr.md) | [Next: Storage Queue](storage-queue.md)
 
 - Relacyjna baza danych w chmurze (PaaS, DBaaS).
 - Wysoka dostępność (HA), automatyczne backupy, geo-replikacja, skalowanie.
@@ -95,4 +99,3 @@ public async Task<int> GetCountAsync(string connectionString)
 
 ---
 
-[Prev: SignalR](signalr.md) | [Next: Storage Queue](storage-queue.md)

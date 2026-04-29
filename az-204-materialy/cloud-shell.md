@@ -1,6 +1,10 @@
 
 
+
 # Azure Cloud Shell
+---
+
+[Prev: Web PubSub](webpubsub.md) | [Next: VNet](vnet.md)
 
 ## Definicja
 - Wbudowany terminal w portalu Azure (Bash, PowerShell).
@@ -79,4 +83,3 @@ Brak — obsługa przez terminal, nie przez C#.
 
 ---
 
-[Prev: Web PubSub](webpubsub.md) | [Next: VNet](vnet.md)

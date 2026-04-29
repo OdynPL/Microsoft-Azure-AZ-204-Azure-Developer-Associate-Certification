@@ -1,5 +1,9 @@
 
+
 # Azure Virtual Network (VNet)
+---
+
+[Prev: Cloud Shell](cloud-shell.md) | [Next: API Authorization](api-authorization.md)
 
 **Definicja:**
 - **Azure Virtual Network (VNet)** to logiczna izolacja sieci w chmurze Azure.
@@ -117,4 +121,3 @@ await foreach (var vnet in subscription.GetVirtualNetworksAsync())
 
 ---
 
-[Prev: Cloud Shell](cloud-shell.md) | [Next: API Authorization](api-authorization.md)

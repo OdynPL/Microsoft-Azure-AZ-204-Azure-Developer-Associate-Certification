@@ -1,6 +1,9 @@
 
 
 # Azure App Configuration
+---
+
+[Prev: App Service](app-service.md) | [Next: API Management](api-management.md)
 
 ## Definicja
 - Centralne miejsce do zarządzania konfiguracją aplikacji i flagami funkcji (**feature flags**).
@@ -79,4 +82,3 @@ var app = builder.Build();
 
 ---
 
-[Prev: App Service](app-service.md) | [Next: API Management](api-management.md)

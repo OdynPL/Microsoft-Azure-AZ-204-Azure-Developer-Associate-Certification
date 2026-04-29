@@ -1,6 +1,8 @@
-#
-[Prev: Azure Cloud Shell](cloud-shell.md) | [Next: Azure Kubernetes Service (AKS)](azure-aks.md)
+
 # Azure Containers
+---
+
+[Prev: Azure Cloud Shell](cloud-shell.md) | [Next: Azure Kubernetes Service (AKS)](azure-aks.md)
 
 - Uruchamianie aplikacji w kontenerach bez zarządzania infrastrukturą VM.
 - Najważniejsze usługi: **Azure Container Instances (ACI)**, **Azure Container Registry (ACR)**.

@@ -1,5 +1,9 @@
 
+
 # Azure Cache for Redis
+---
+
+[Prev: Monitor](monitor.md) | [Next: Service Bus](service-bus.md)
 
 - Szybka, w pełni zarządzana pamięć podręczna w chmurze (Redis as a Service).
 - Wspiera operacje klucz-wartość, pub/sub, listy, sety, hash.
@@ -80,4 +84,3 @@ public async Task<string> GetValueAsync(string connectionString, string key)
 
 ---
 
-[Prev: Monitor](monitor.md) | [Next: Service Bus](service-bus.md)

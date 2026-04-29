@@ -1,6 +1,9 @@
 
 
 # Azure App Service
+---
+
+[Prev: Application Insights](application-insights.md) | [Next: App Configuration](app-configuration.md)
 
 ## Definicja
 - Usługa **PaaS** do hostowania aplikacji webowych i API.
@@ -74,4 +77,3 @@ app.Run();
 
 ---
 
-[Prev: Application Insights](application-insights.md) | [Next: App Configuration](app-configuration.md)

@@ -1,5 +1,9 @@
 
+
 # Azure Cosmos DB
+---
+
+[Prev: Blob Storage](blob-storage.md) | [Next: Deployment (Bicep)](deployment-bicep.md)
 
 ## Definicja
 - Globalnie rozproszona baza NoSQL.
@@ -58,4 +62,3 @@ public async Task AddItemAsync<T>(CosmosClient client, string db, string contain
 
 ---
 
-[Prev: Blob Storage](blob-storage.md) | [Next: Deployment (Bicep)](deployment-bicep.md)

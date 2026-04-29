@@ -1,5 +1,9 @@
 
+
 # Azure Blob Storage
+---
+
+[Prev: CDN](cdn.md) | [Next: Cosmos DB](cosmos-db.md)
 
 ## Definicja
 - Przechowywanie dużych ilości danych nieustrukturyzowanych (pliki, obrazy, backupy).
@@ -59,4 +63,3 @@ public async Task UploadBlobAsync(string connectionString, string container, str
 
 ---
 
-[Prev: CDN](cdn.md) | [Next: Cosmos DB](cosmos-db.md)

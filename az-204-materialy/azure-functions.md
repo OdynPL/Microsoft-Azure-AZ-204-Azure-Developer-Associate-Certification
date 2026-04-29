@@ -1,6 +1,10 @@
 
 
+
 # Azure Functions
+---
+
+[Prev: Blob Storage](blob-storage.md) | [Next: CDN](cdn.md)
 
 ## Definicja
 - **Serverless compute** do uruchamiania kodu na żądanie.
@@ -138,4 +142,3 @@ public void Run([ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection
 
 ---
 
-[Prev: Blob Storage](blob-storage.md) | [Next: CDN](cdn.md)

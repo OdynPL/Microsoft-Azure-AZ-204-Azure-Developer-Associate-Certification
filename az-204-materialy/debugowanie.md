@@ -1,6 +1,8 @@
-#
-[Prev: Sposoby deployowania aplikacji](deployment-methods.md) | [Next: Azure Monitor](monitor.md)
+
 # Debugowanie aplikacji w Azure
+---
+
+[Prev: Sposoby deployowania aplikacji](deployment-methods.md) | [Next: Azure Monitor](monitor.md)
 
 **Definicja:**
 - **Debugowanie** to proces wykrywania i usuwania błędów w aplikacjach wdrożonych na platformie Azure.

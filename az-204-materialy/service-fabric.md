@@ -1,6 +1,8 @@
-#
-[Prev: Artifactory (Azure)](artifactory.md) | [Next: Azure Functions](azure-functions.md)
+
 # Azure Service Fabric
+---
+
+[Prev: Artifactory (Azure)](artifactory.md) | [Next: Azure Functions](azure-functions.md)
 
 - Platforma do budowy i zarządzania mikrousługami oraz aplikacjami rozproszonymi.
 - Obsługuje kontenery, aplikacje .NET, Java, Linux, Windows.

@@ -1,5 +1,9 @@
 
+
 # Azure Event Hub
+---
+
+[Prev: Event Grid](event-grid.md) | [Next: Front Door](front-door.md)
 
 - Usługa do zbierania i przetwarzania dużych ilości zdarzeń (**event streaming**).
 - Wspiera scenariusze IoT, telemetryka, logi, big data.
@@ -81,4 +85,3 @@ public void Run([EventHubTrigger("myhub", Connection = "EventHubConnection")] st
 
 ---
 
-[Prev: Event Grid](event-grid.md) | [Next: Front Door](front-door.md)

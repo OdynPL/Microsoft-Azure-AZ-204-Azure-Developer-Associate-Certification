@@ -1,5 +1,9 @@
 
+
 # Azure Event Grid
+---
+
+[Prev: Deployment (Bicep)](deployment-bicep.md) | [Next: Event Hub](event-hub.md)
 
 - Usługa do obsługi zdarzeń (**eventing**) w Azure.
 - Umożliwia routing zdarzeń między usługami, aplikacjami i zasobami.
@@ -81,4 +85,3 @@ public void Run([EventGridTrigger] EventGridEvent eventGridEvent)
 
 ---
 
-[Prev: Deployment (Bicep)](deployment-bicep.md) | [Next: Event Hub](event-hub.md)

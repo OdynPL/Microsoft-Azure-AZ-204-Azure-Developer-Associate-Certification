@@ -1,6 +1,8 @@
-#
-[Prev: Azure Deployment (ARM/Bicep)](deployment-bicep.md) | [Next: Debugowanie aplikacji w Azure](debugowanie.md)
+
 # Sposoby deployowania aplikacji na Azure
+---
+
+[Prev: Azure Deployment (ARM/Bicep)](deployment-bicep.md) | [Next: Debugowanie aplikacji w Azure](debugowanie.md)
 
 **Definicja:**
 - **Deployment** to proces wdrażania aplikacji lub zasobów do środowiska Azure.

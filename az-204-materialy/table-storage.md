@@ -1,5 +1,9 @@
 
+
 # Azure Table Storage
+---
+
+[Prev: Storage Queue](storage-queue.md) | [Next: Web PubSub](webpubsub.md)
 
 - Prosta baza NoSQL (klucz-wartość, schemat elastyczny).
 - Przechowywanie dużych ilości danych tabelarycznych, logów, metadanych.
@@ -88,4 +92,3 @@ public async Task AddEntityAsync<T>(string connectionString, string tableName, T
 
 ---
 
-[Prev: Storage Queue](storage-queue.md) | [Next: Web PubSub](webpubsub.md)

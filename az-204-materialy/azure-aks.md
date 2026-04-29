@@ -1,6 +1,8 @@
-#
-[Prev: Azure Containers](azure-containers.md) | [Next: Artifactory (Azure)](artifactory.md)
+
 # Azure Kubernetes Service (AKS)
+---
+
+[Prev: Azure Containers](azure-containers.md) | [Next: Artifactory (Azure)](artifactory.md)
 
 - Zarządzany klaster Kubernetes w Azure.
 - Automatyzuje deployment, skalowanie i zarządzanie kontenerami.
