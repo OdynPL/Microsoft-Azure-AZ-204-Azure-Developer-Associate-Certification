@@ -1,4 +1,7 @@
+
+
 # Azure SQL Database
+---
 
 ## Przechowywanie connection stringów w aplikacjach Azure
 
@@ -29,7 +32,7 @@ var connStr2 = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
 using Azure.Identity;
 builder.Configuration.AddAzureAppConfiguration(options =>
 {
-    options.Connect(Environment.GetEnvironmentVariable("AppConfigConnectionString"));
+        options.Connect(Environment.GetEnvironmentVariable("AppConfigConnectionString"));
 });
 var connStr = builder.Configuration["SqlConnectionString"];
 ```
@@ -48,10 +51,6 @@ var connStr = secret.Value;
 - Preferuj Key Vault do danych wrażliwych.
 - App Configuration nie przechowuje tajnych danych – do tego Key Vault.
 - W App Service connection stringi są automatycznie mapowane do zmiennych środowiskowych.
-
-
-# Azure SQL Database
----
 
 [Prev: SignalR](signalr.md) | [Next: Storage Queue](storage-queue.md)
 
