@@ -24,11 +24,13 @@
 - **Caching**: przyspieszenie dostarczania treści (możliwość wyłączenia dla dynamicznych endpointów).
 - **Custom Domain**: własna domena z SSL (wymaga walidacji i przypisania certyfikatu).
 - **URL Rewrite/Redirect**: modyfikacja adresów URL (np. przekierowanie HTTP→HTTPS).
+
 ## Zaawansowane scenariusze
 - WAF z własnymi regułami (custom rules).
 - Routing geo-based (na podstawie kraju użytkownika).
 - Failover do innego regionu przy niedostępności backendu.
 - Health probe z niestandardową ścieżką i metodą.
+
 ## Typowe pułapki egzaminacyjne
 - Brak health probe = backend zawsze uznany za niedostępny.
 - WAF wymaga przypisania do Front Door, samo utworzenie nie wystarczy.

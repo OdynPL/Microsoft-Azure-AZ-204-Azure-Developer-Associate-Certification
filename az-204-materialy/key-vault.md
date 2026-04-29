@@ -72,6 +72,49 @@ public async Task<string> GetSecretAsync(string vaultUrl, string secretName)
 }
 ```
 
+## Zarządzanie sekretami i certyfikatami – przykłady C#
+
+```csharp
+// Dodawanie/aktualizacja sekretu
+public async Task SetSecretAsync(string vaultUrl, string secretName, string value)
+{
+        var credential = new DefaultAzureCredential();
+        var client = new SecretClient(new Uri(vaultUrl), credential);
+        await client.SetSecretAsync(secretName, value);
+}
+
+// Usuwanie sekretu
+public async Task DeleteSecretAsync(string vaultUrl, string secretName)
+{
+        var credential = new DefaultAzureCredential();
+        var client = new SecretClient(new Uri(vaultUrl), credential);
+        await client.StartDeleteSecretAsync(secretName);
+}
+
+// Odczyt certyfikatu jako Base64 (np. do TLS)
+using Azure.Security.KeyVault.Certificates;
+public async Task<string> GetCertificateAsync(string vaultUrl, string certName)
+{
+        var credential = new DefaultAzureCredential();
+        var client = new CertificateClient(new Uri(vaultUrl), credential);
+        KeyVaultCertificateWithPolicy cert = await client.GetCertificateAsync(certName);
+        return Convert.ToBase64String(cert.Cer);
+}
+
+// Dodanie certyfikatu (np. z pliku PFX)
+public async Task ImportCertificateAsync(string vaultUrl, string certName, string pfxPath, string pfxPassword)
+{
+        var credential = new DefaultAzureCredential();
+        var client = new CertificateClient(new Uri(vaultUrl), credential);
+        byte[] pfxBytes = File.ReadAllBytes(pfxPath);
+        var importOptions = new ImportCertificateOptions(certName, pfxBytes)
+        {
+                Password = pfxPassword
+        };
+        await client.ImportCertificateAsync(importOptions);
+}
+```
+
 ## Wskazówka egzaminacyjna
 - Managed Identity wymaga nadania uprawnień w Key Vault (Access Policy lub RBAC).
 - Soft delete domyślnie włączony (odzyskiwanie sekretów).

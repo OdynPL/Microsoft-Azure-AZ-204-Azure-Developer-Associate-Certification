@@ -22,12 +22,24 @@
 - Tworzenie grupy zasobów i VM przez PowerShell.
 
 ## Komendy
-- Instalacja modułu:
-  `Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force`
-- Logowanie:
-  `Connect-AzAccount`
-- Tworzenie grupy zasobów:
-  `New-AzResourceGroup -Name myRG -Location westeurope`
+
+| Komenda | Zastosowanie | Kluczowe parametry |
+|---------|--------------|--------------------|
+| `Install-Module -Name Az` | Instalacja modułu Az | `-Scope`, `-Repository`, `-Force` |
+| `Connect-AzAccount` | Logowanie do Azure | brak |
+| `Set-AzContext` | Ustawienie subskrypcji/kontekstu | `-Subscription`, `-Name` |
+| `New-AzResourceGroup` | Tworzenie grupy zasobów | `-Name`, `-Location` |
+| `New-AzVM` | Tworzenie maszyny wirtualnej | `-ResourceGroupName`, `-Name`, `-Location`, `-Image` |
+| `Get-AzResource` | Pobieranie zasobów | `-Name`, `-ResourceGroupName`, `-ResourceType` |
+| `Remove-AzResourceGroup` | Usuwanie grupy zasobów | `-Name`, `-Force` |
+| `New-AzStorageAccount` | Tworzenie konta storage | `-ResourceGroupName`, `-Name`, `-Location`, `-SkuName` |
+| `Get-AzVM` | Pobieranie maszyn wirtualnych | `-Name`, `-ResourceGroupName` |
+| `Start-AzVM` / `Stop-AzVM` | Uruchamianie/zatrzymywanie VM | `-Name`, `-ResourceGroupName` |
+| `New-AzFunctionApp` | Tworzenie Function App | `-ResourceGroupName`, `-Name`, `-StorageAccountName`, `-Runtime` |
+| `Get-AzWebApp` | Pobieranie App Service | `-Name`, `-ResourceGroupName` |
+| `Set-AzWebApp` | Aktualizacja App Service | `-Name`, `-ResourceGroupName`, `-AppSettings` |
+| `Get-AzKeyVaultSecret` | Pobieranie sekretu z Key Vault | `-VaultName`, `-Name` |
+| `Set-AzKeyVaultSecret` | Dodanie/aktualizacja sekretu | `-VaultName`, `-Name`, `-SecretValue` |
 
 ## Przykład kodu PowerShell
 ```powershell

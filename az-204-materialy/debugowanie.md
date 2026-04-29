@@ -26,6 +26,10 @@
 - **Azure Storage Logs** – logi operacji na Storage Account.
 - **Event Grid/Event Hub** – przesyłanie logów i zdarzeń do dalszej analizy.
 
+- **Diagnostyka Functions** – Monitor w portalu Functions, podgląd logów wywołań, błędów, retry.
+- **Diagnostyka AKS** – kubectl logs, podgląd logów podów, monitoring kontenerów.
+- **Diagnostyka VM** – Serial Console, Boot Diagnostics, logi systemowe.
+
 ## Scenariusze egzaminacyjne
 
 - Konfiguracja Application Insights w Web App, Functions, AKS.

@@ -140,5 +140,3 @@ public void Run([ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection
 
 ---
 
----
-

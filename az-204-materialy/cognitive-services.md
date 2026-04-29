@@ -35,6 +35,32 @@ var client = new TextAnalyticsClient(new Uri(endpoint), new AzureKeyCredential(k
 var result = await client.AnalyzeSentimentAsync("To jest super!");
 ```
 
+```csharp
+// Przykład: Rozpoznawanie języka
+var languageResult = await client.DetectLanguageAsync("Bonjour tout le monde");
+Console.WriteLine(languageResult.Value.Iso6391Name); // "fr"
+
+// Przykład: Rozpoznawanie obrazów (Computer Vision)
+using Azure.AI.Vision.ImageAnalysis;
+var visionClient = new ImageAnalyzerClient(new Uri(endpoint), new AzureKeyCredential(key));
+var imageResult = await visionClient.AnalyzeImageAsync("https://example.com/image.jpg", new[] { VisualFeature.Tags });
+foreach (var tag in imageResult.Value.Tags)
+  Console.WriteLine(tag.Name);
+
+// Przykład: Tłumaczenie tekstu (Translator)
+using Azure.AI.Translation.Text;
+var translator = new TextTranslationClient(new Uri(endpoint), new AzureKeyCredential(key));
+var translation = await translator.TranslateAsync("en", new[] { "Witaj świecie" });
+Console.WriteLine(translation.Value[0].Translations[0].Text); // "Hello world"
+
+// Przykład: Rozpoznawanie mowy (Speech to Text)
+using Azure.AI.Speech;
+var speechConfig = SpeechConfig.FromSubscription(key, region);
+using var recognizer = new SpeechRecognizer(speechConfig);
+var speechResult = await recognizer.RecognizeOnceAsync();
+Console.WriteLine(speechResult.Text);
+```
+
 ## Wskazówka egzaminacyjna
 - Najczęstszy błąd: brak klucza lub zły endpoint.
 - Pricing tier ogranicza liczbę wywołań na minutę.

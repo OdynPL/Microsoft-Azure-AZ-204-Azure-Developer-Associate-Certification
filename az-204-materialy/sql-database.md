@@ -1,3 +1,53 @@
+# Azure SQL Database
+
+## Przechowywanie connection stringów w aplikacjach Azure
+
+**Sposoby przechowywania:**
+- App Settings (App Service, Functions):
+    - Przechowywanie connection stringów jako ustawienia aplikacji (portal, CLI, ARM/Bicep)
+    - Dostęp w C# przez `IConfiguration["ConnectionStrings:Default"]` lub `Environment.GetEnvironmentVariable()`
+- Azure App Configuration:
+    - Centralne repozytorium kluczy, connection string jako Key-Value
+    - Dostęp w C# przez Microsoft.Extensions.Configuration.AzureAppConfiguration
+- Azure Key Vault:
+    - Connection string jako sekret
+    - Dostęp w C# przez Azure.Security.KeyVault.Secrets
+
+**Przykłady:**
+
+### 1. App Settings (App Service)
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddEnvironmentVariables();
+var connStr = builder.Configuration.GetConnectionString("Default");
+// lub
+var connStr2 = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
+```
+
+### 2. Azure App Configuration
+```csharp
+using Azure.Identity;
+builder.Configuration.AddAzureAppConfiguration(options =>
+{
+    options.Connect(Environment.GetEnvironmentVariable("AppConfigConnectionString"));
+});
+var connStr = builder.Configuration["SqlConnectionString"];
+```
+
+### 3. Azure Key Vault
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+var client = new SecretClient(new Uri("https://myvault.vault.azure.net/"), new DefaultAzureCredential());
+KeyVaultSecret secret = await client.GetSecretAsync("SqlConnectionString");
+var connStr = secret.Value;
+```
+
+**Wskazówki:**
+- Nie przechowuj connection stringów w kodzie ani w plikach repozytorium.
+- Preferuj Key Vault do danych wrażliwych.
+- App Configuration nie przechowuje tajnych danych – do tego Key Vault.
+- W App Service connection stringi są automatycznie mapowane do zmiennych środowiskowych.
 
 
 # Azure SQL Database

@@ -55,6 +55,45 @@ public async Task UploadBlobAsync(string connectionString, string container, str
 }
 ```
 
+```csharp
+// Pobieranie pliku z Blob Storage
+public async Task DownloadBlobAsync(string connectionString, string container, string blobName, string downloadPath)
+{
+        var client = new BlobContainerClient(connectionString, container);
+        var blob = client.GetBlobClient(blobName);
+        await blob.DownloadToAsync(downloadPath);
+}
+
+// Generowanie SAS dla bloba
+public string GetBlobSasUri(string connectionString, string container, string blobName)
+{
+        var client = new BlobContainerClient(connectionString, container);
+        var blob = client.GetBlobClient(blobName);
+        var sas = blob.GenerateSasUri(Azure.Storage.Sas.BlobSasPermissions.Read, DateTimeOffset.UtcNow.AddHours(1));
+        return sas.ToString();
+}
+
+// Usuwanie bloba
+public async Task DeleteBlobAsync(string connectionString, string container, string blobName)
+{
+        var client = new BlobContainerClient(connectionString, container);
+        var blob = client.GetBlobClient(blobName);
+        await blob.DeleteIfExistsAsync();
+}
+
+// Listowanie blobów w kontenerze
+public async Task<List<string>> ListBlobsAsync(string connectionString, string container)
+{
+        var client = new BlobContainerClient(connectionString, container);
+        var result = new List<string>();
+        await foreach (var blob in client.GetBlobsAsync())
+        {
+                result.Add(blob.Name);
+        }
+        return result;
+}
+```
+
 ## Wskazówka egzaminacyjna
 - SAS Token wygasa, nie nadaje uprawnień na stałe.
 - Access Tier wpływa na koszty i czas dostępu.

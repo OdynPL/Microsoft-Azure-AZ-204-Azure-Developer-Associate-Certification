@@ -53,6 +53,15 @@
 | az identity  | Zarządzanie tożsamościami | --name, --resource-group |
 | az acr       | Zarządzanie Azure Container Registry | --name, --resource-group |
 | az aks       | Zarządzanie Azure Kubernetes Service | --name, --resource-group |
+| az appconfig | Zarządzanie App Configuration | --name, --resource-group, --key, --value |
+| az cosmosdb  | Zarządzanie Cosmos DB | --name, --resource-group, --database-name, --key |
+| az eventgrid | Zarządzanie Event Grid | --name, --resource-group, --topic-name, --endpoint |
+| az eventhubs | Zarządzanie Event Hub | --name, --resource-group, --namespace-name, --eventhub-name |
+| az servicebus| Zarządzanie Service Bus | --name, --resource-group, --namespace-name, --queue-name |
+| az policy    | Zarządzanie politykami | --name, --resource-group, --definition, --assignment |
+| az blueprint | Zarządzanie Blueprints | --name, --resource-group |
+| az logicapp  | Zarządzanie Logic Apps | --name, --resource-group |
+| az marketplace | Przeglądanie Marketplace | --publisher, --offer |
 
 ## Przykładowe parametry
 

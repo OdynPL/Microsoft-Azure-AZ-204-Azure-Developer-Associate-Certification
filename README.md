@@ -56,6 +56,7 @@ Każdy rozdział to osobny plik z krótką definicją i przykładem.
 - [Azure PowerShell](az-204-materialy/powershell.md)
 - [Azure with Docker](az-204-materialy/azure-with-docker.md)
 - [Azure SDK for .NET](az-204-materialy/azure-sdk.md)
+- [Przechowywanie connection stringów (SQL)](az-204-materialy/sql-database.md#przechowywanie-connection-stringów-w-aplikacjach-azure)
 - [API Authorization](az-204-materialy/api-authorization.md)
 - [Debugowanie](az-204-materialy/debugowanie.md)
 - [Deployment (ARM)](az-204-materialy/deployment-arm.md)
